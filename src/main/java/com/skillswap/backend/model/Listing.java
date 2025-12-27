@@ -25,6 +25,10 @@ public class Listing {
     @Column(nullable = false)
     private String category;
 
+    @Column
+    private boolean isSold = false;
+
+    @Column
     private LocalDateTime createdAT = LocalDateTime.now();
 
     @ManyToOne

@@ -38,4 +38,16 @@ public class ListingService {
     public List<Listing> getListingsForUser(Long userId) {
         return listingRepository.findByUserId(userId);
     }
+
+    public List<Listing> searchByCategory(String category) {
+        return listingRepository.findByCategory(category);
+    }
+
+    public Listing buyListing(long id) {
+        Listing listing = listingRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException("User not found"));
+        listing.setSold(true);
+        return listingRepository.save(listing);
+
+    }
 }
